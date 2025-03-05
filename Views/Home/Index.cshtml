@@ -1,8 +1,233 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-slider">
+        <div class="hero-slide" style="background-image: url('/images/hotel-exterior.jpg');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Experience Luxury Beyond Compare</h1>
+                    <p>Discover the perfect blend of comfort, convenience, and style</p>
+                    <div class="booking-form-container">
+                        <form class="booking-form">
+                            <div class="row g-3">
+                                <div class="col-md">
+                                    <label class="form-label">Check In</label>
+                                    <input type="date" class="form-control" id="checkInDate">
+                                </div>
+                                <div class="col-md">
+                                    <label class="form-label">Check Out</label>
+                                    <input type="date" class="form-control" id="checkOutDate">
+                                </div>
+                                <div class="col-md">
+                                    <label class="form-label">Rooms</label>
+                                    <select class="form-select" id="roomCount">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label class="form-label">Guests</label>
+                                    <select class="form-select" id="guestCount">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5+">5+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label class="form-label">&nbsp;</label>
+                                    <button type="submit" class="btn btn-primary w-100">Check Availability</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Rooms Section -->
+<section class="featured-rooms py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Our Luxurious Accommodations</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="room-card">
+                    <img src="/images/standard-room.jpg" alt="Standard Room" class="img-fluid">
+                    <div class="room-details p-3">
+                        <h3>Standard Room</h3>
+                        <p>Our cozy standard rooms offer the perfect retreat with essential amenities for a comfortable stay.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">From $100/night</span>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="room-card">
+                    <img src="/images/deluxe-room.jpg" alt="Deluxe Room" class="img-fluid">
+                    <div class="room-details p-3">
+                        <h3>Deluxe Room</h3>
+                        <p>Experience premium comfort with our deluxe rooms featuring modern amenities and elegant design.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">From $150/night</span>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="room-card">
+                    <img src="/images/suite-room.jpg" alt="Suite Room" class="img-fluid">
+                    <div class="room-details p-3">
+                        <h3>Luxury Suite</h3>
+                        <p>Indulge in our spacious suites with separate living areas and premium amenities for a truly luxurious experience.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">From $250/night</span>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hotel Features Section -->
+<section class="hotel-features py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">What We Offer</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4 text-center">
+                <i class="bi bi-wifi fs-1 text-primary mb-3"></i>
+                <h3>Free Wi-Fi</h3>
+                <p>Stay connected with high-speed internet throughout your stay.</p>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <i class="bi bi-cup-hot fs-1 text-primary mb-3"></i>
+                <h3>Breakfast Included</h3>
+                <p>Start your day with our complimentary gourmet breakfast.</p>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <i class="bi bi-water fs-1 text-primary mb-3"></i>
+                <h3>Swimming Pool</h3>
+                <p>Relax and refresh in our pristine indoor and outdoor pools.</p>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <i class="bi bi-bicycle fs-1 text-primary mb-3"></i>
+                <h3>Fitness Center</h3>
+                <p>Maintain your workout routine in our state-of-the-art gym.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section py-5" style="background-image: url('/images/cta-bg.jpg');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h2 class="text-white mb-4">Special Offer - Save up to 25%</h2>
+                <p class="text-white mb-4">Book directly through our website and enjoy exclusive discounts and perks!</p>
+                <a href="#" class="btn btn-light btn-lg">Book Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="registerModalLabel">Create Account</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" asp-controller="Account" asp-action="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="FirstName" class="form-label">First Name</label>
+                            <input name="FirstName" id="FirstName" class="form-control" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input name="LastName" id="LastName" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email Address</label>
+                        <input type="email" name="Email" id="Email" class="form-control" required />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input type="password" name="Password" id="Password" class="form-control" required />
+                            <small class="form-text text-muted">Password must be at least 8 characters and include uppercase, lowercase, digit and special character.</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PhoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" name="PhoneNumber" id="PhoneNumber" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <textarea name="Address" id="Address" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="registerForm" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Initialize datepickers with minimum dates
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkInDate').setAttribute('min', today);
+            document.getElementById('checkInDate').value = today;
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            document.getElementById('checkOutDate').setAttribute('min', tomorrowStr);
+            document.getElementById('checkOutDate').value = tomorrowStr;
+            
+            // Update minimum check-out date when check-in date changes
+            document.getElementById('checkInDate').addEventListener('change', function() {
+                const checkInDate = new Date(this.value);
+                checkInDate.setDate(checkInDate.getDate() + 1);
+                const minCheckOutStr = checkInDate.toISOString().split('T')[0];
+                document.getElementById('checkOutDate').setAttribute('min', minCheckOutStr);
+                
+                // If current checkout is before new check-in date + 1, update it
+                const currentCheckOut = new Date(document.getElementById('checkOutDate').value);
+                if (currentCheckOut <= new Date(this.value)) {
+                    document.getElementById('checkOutDate').value = minCheckOutStr;
+                }
+            });
+        });
+    </script>
+}

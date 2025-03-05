@@ -1,0 +1,142 @@
+﻿@model HotelManagementSystem.Models.ViewModels.RoomDetailViewModel
+@{
+    ViewData["Title"] = $"{char.ToUpper(Model.Category.Name[0]) + Model.Category.Name.Substring(1)} Room Details";
+}
+
+<div class="bg-light py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Room" asp-action="Index">Rooms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@(char.ToUpper(Model.Category.Name[0]) + Model.Category.Name.Substring(1))</li>
+            </ol>
+        </nav>
+        
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <img src="/images/@(Model.Category.Name)-room.jpg" alt="@Model.Category.Name Room" class="img-fluid rounded shadow">
+                
+                <div class="mt-4">
+                    <h2 class="text-capitalize">@Model.Category.Name Room</h2>
+                    <p class="lead">@Model.Category.Description</p>
+                    
+                    <h4 class="mt-4">Amenities</h4>
+                    <div class="row">
+                        @foreach (var amenity in Model.Category.Amenities.Split(','))
+                        {
+                            <div class="col-md-6 mb-2">
+                                <i class="bi bi-check-circle-fill text-success"></i> @amenity.Trim()
+                            </div>
+                        }
+                    </div>
+                    
+                    <h4 class="mt-4">Room Details</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Capacity:</th>
+                            <td>@Model.Category.Capacity persons</td>
+                        </tr>
+                        <tr>
+                            <th>Price per night:</th>
+                            <td>$@Model.Category.BasePrice</td>
+                        </tr>
+                        <tr>
+                            <th>Available rooms:</th>
+                            <td>@Model.AvailableRooms.Count()</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Book This Room</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Check In Date</label>
+                                <input type="date" class="form-control" id="checkInDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Check Out Date</label>
+                                <input type="date" class="form-control" id="checkOutDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Number of Guests</label>
+                                <select class="form-select" id="guestCount">
+                                    @for (int i = 1; i <= Model.Category.Capacity; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Check Availability</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">From $@Model.Category.BasePrice/night</span>
+                            <span class="text-muted">* plus taxes & fees</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mt-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Best Rate Guarantee</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Find a lower rate for the same room type and dates, and we'll match it plus give you an additional 10% off.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Need Help?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="bi bi-telephone"></i> Call us: <a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                        <p><i class="bi bi-envelope"></i> Email: <a href="mailto:reservations@luxuryhotel.com">reservations@luxuryhotel.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Initialize datepickers with minimum dates
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkInDate').setAttribute('min', today);
+            document.getElementById('checkInDate').value = today;
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            document.getElementById('checkOutDate').setAttribute('min', tomorrowStr);
+            document.getElementById('checkOutDate').value = tomorrowStr;
+            
+            // Update minimum check-out date when check-in date changes
+            document.getElementById('checkInDate').addEventListener('change', function() {
+                const checkInDate = new Date(this.value);
+                checkInDate.setDate(checkInDate.getDate() + 1);
+                const minCheckOutStr = checkInDate.toISOString().split('T')[0];
+                document.getElementById('checkOutDate').setAttribute('min', minCheckOutStr);
+                
+                // If current checkout is before new check-in date + 1, update it
+                const currentCheckOut = new Date(document.getElementById('checkOutDate').value);
+                if (currentCheckOut <= new Date(this.value)) {
+                    document.getElementById('checkOutDate').value = minCheckOutStr;
+                }
+            });
+        });
+    </script>
+}

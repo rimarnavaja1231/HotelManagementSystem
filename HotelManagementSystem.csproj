@@ -17,4 +17,16 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Models\Account\" />
+    <Folder Include="Models\Booking\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Views\ Admin\" />
+    <Folder Include="Views\Booking\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
